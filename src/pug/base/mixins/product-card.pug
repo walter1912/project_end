@@ -1,0 +1,14 @@
+mixin productCard(price, title, image)
+  .product__card.card.text-center.align-items-center.border.shadow-sm
+    img.card-img-top.w-75(src=image, alt="Card image cap")
+    .card-body.mb-4
+      p.mb-1.px-0.text-danger.fw-bold=price
+        span Đ
+      h2.fs-6.fw-bold.card-titleCard.text-uppercase=title
+      p.card-text.mb-1 
+        each index in [1, 2, 3, 4, 5]
+          img.me-1(src="../../../assets/images/svg/star-fill.svg" alt="star")
+        | (12 đánh giá)
+    .button
+      each button in buttonsDetail
+        +button(button.text, button.link, button.class)

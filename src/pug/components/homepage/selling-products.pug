@@ -1,0 +1,26 @@
+mixin selling
+  .container.mt-5
+    +productType('Sản phẩm bán chạy', 'Máy khoan', 'Máy in 3D', 'Máy CNC', 'Máy tiện', 'Máy khác')
+
+    .row 
+      .col-md-6.col-lg-3
+        each product, index in productsSellingLeftData
+          .col-12.mt-4
+            +productCard(product.price, product.title, product.image)
+
+      .col-md-6.mt-4.selling__content
+        +productCard(productSellingBetweenData.price, productSellingBetweenData.title, productSellingBetweenData.image)
+
+      .col-md-6.col-lg-3
+        each product, index in productsSellingRightData
+          .col-12.mt-4
+            +productCard(product.price, product.title, product.image)
+
+    .selling__rocket.bg-light.d-flex.justify-content-between.align-items-center.mt-4.flex-column.flex-md-row
+      img.selling__rocket__image.px-4.me-5(src=productSellingRocket.image alt=productSellingRocket.alt)
+      .selling__rocket__detail.p-2.me-lg-5.me-0.d-flex.flex-column.jutify-content-center.align-items-center
+        p.fw-bold.display-6= productSellingRocket.title
+        p= productSellingRocket.content
+        .button
+          each button in buttonsDetail
+            +button(button.text, button.link, button.class)

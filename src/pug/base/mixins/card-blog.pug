@@ -1,0 +1,16 @@
+mixin cardBlog(post)
+  a.text-dark.text-decoration-none(href="/blog-detail.html") 
+    .d-flex.flex-column
+      img.w-100(src=post.image alt="Card image cap")
+      .m-3.mx-0
+        h2.fs-4.card-title.text-uppercase.fw-bold= post.title
+        .d-flex.flex-sm-row.flex-column.m-2.mx-0
+          span.me-3.fst-italic.fw-light= post.date
+          span.fst-italic.fw-light.text-center 
+            img.px-1(src="../../../assets/images/svg/person-fill.svg" alt="person")
+            | Đăng bởi:
+            a.fst-italic.fw-light.ms-2.me-3.text-warning(href="#")= post.author
+            span.fst-italic.fw-light= `(${post.comments})`
+        p.mb-4.card-text= post.content
+          |...
+          a.text-warning(href="#") đọc tiếp

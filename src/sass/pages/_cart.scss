@@ -1,0 +1,18 @@
+.cart {
+  &__column:not(:first-child) {
+    min-width: 200px;
+  }
+
+  &__image {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__payment {
+    max-width: 320px;
+  }
+
+  &__quanlity {
+    width: 40px;
+  }
+}

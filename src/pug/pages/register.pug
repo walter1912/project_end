@@ -1,0 +1,34 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Đăng ký"
+  title=title
+
+block content 
+  -var infoRegister = [ { label: 'Họ và tên:', id: 'hoten' }, { label: 'Email:', id: 'email' }, { label: 'Số điện thoại:', id: 'phone' }, { label: 'Địa chỉ:', id: 'address' } ]
+  -var infoLogin = [ { label: 'Họ và tên:', id: 'hoten' }, { label: 'Email:', id: 'email' }]
+
+  +breadcrumb([{href: '#', title: 'Đăng ký'}])
+
+  .container.mt-4.mb-5
+    h2.fs-4 Thông tin cá nhân: 
+    form(action="#" method="post") 
+      .row
+        each info in infoRegister
+          .col-sm-6 
+            +input([{label: info.label, id: info.id}])
+
+      .d-flex.justify-content-between.m-4.mx-0
+        .login__input
+          input.form-check-input(type="checkbox" value="" id="flexCheckChecked")
+          label.ms-2.form-check-label.fw-lighter(for="flexCheckChecked") Đăng ký nhận tin tức qua email 
+
+    h2.fs-4 Thông tin đăng nhập:
+    form(action="#" method="post") 
+      .row
+        each info in infoLogin
+          .col-sm-6 
+            +input([{label: info.label, id: info.id}])
+    .mt-4.mb-5.button
+      each button in buttonsRegister
+        +button(button.text, button.link, button.class)

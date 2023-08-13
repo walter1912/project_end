@@ -1,0 +1,40 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Giỏ hàng"
+  title=title
+
+block content 
+  +breadcrumb([{href: '#', title: 'Giỏ hàng'}])
+
+  .cart.container.p-0.mt-5.mb-5
+    .table-responsive
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            each header in cartHeaders
+              th(scope="col").text-uppercase.text-center.align-middle= header
+        tbody
+          each item in cartItems
+            tr
+              th.text-center.align-middle(scope="row")= item.id
+              th.text-uppercase.text-center.align-middle
+                img.cart__image(src=item.image alt="image")
+              th.cart__column.text-uppercase.text-center.align-middle= item.name
+              th.text-uppercase.text-center.align-middle= item.price
+              th.text-uppercase.text-center.align-middle
+                .cart__quanlity.mx-auto.rounded.p-2.px-1.border= item.quantity
+              th.text-uppercase.text-center.align-middle= item.price
+              th.text-uppercase.text-center.align-middle 
+                img(src="../../assets/images/svg/trash.svg" alt="trash")
+
+    .container.p-0.mt-5.mb-5.d-flex.flex-column.align-items-end
+      table.cart__payment.table.table-bordered.table-hover
+        tbody
+          each row in cartPayment
+            tr
+              th.text-uppercase.text-center.align-middle(scope="row")= row.label
+              th.text-center.align-middle= row.value
+      .button
+        each button in buttonsCart
+          +button(button.text, button.link, button.class)

@@ -1,0 +1,6 @@
+mixin paginations(paginations)
+  nav(aria-label="Page navigation example")
+    ul.pagination
+      each page in paginations
+        li.pagination__list.ms-1.borderl.rounded.page-item
+          a.pagination__button.text-dark.page-link(href=page.href)= page.label

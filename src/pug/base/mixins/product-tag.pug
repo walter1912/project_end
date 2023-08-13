@@ -1,0 +1,9 @@
+mixin productTag(price, title, image)
+  .card.container.p-0
+    .row.text-center.align-items-center.p-1.px-2 
+      .col-4 
+        img.card-img-top.w-100(src=image, alt="Card image cap")
+      .col-8.card-body.text-sm-start.text-center.pe-sm-2.pe-lg-3.pe-0
+        h2.fs-6.fw-bold.card-titleCard.text-uppercase=title
+        p.px-0.text-danger.fw-bold=price
+          span Đ

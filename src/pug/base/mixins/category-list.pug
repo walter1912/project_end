@@ -1,0 +1,9 @@
+mixin categoryList(src, title, categoryList)
+  .category__list.border-bottom.mt-4.shadow-sm
+    p.category__list__item.p-3.text-dark.border.border-bottom-0.m-0.d-flex.align-items-center
+      img.category__list__icon.pe-2(src=src alt=`list`)
+      span.fw-bold.text-uppercase= title
+    each category in categoryList
+      p.category__list__item.p-3.text-dark.border.border-bottom-0.m-0.d-flex.align-items-center
+        img.category__list__icon.pe-2(src="../../../assets/images/svg/grid-fill.svg" alt=`danh mục`)
+        span= category

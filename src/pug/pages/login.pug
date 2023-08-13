@@ -1,0 +1,31 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Đăng nhập"
+  title=title
+
+block content 
+  +breadcrumb([{href: '#', title: 'Đăng nhập'}])
+
+  .container.mt-4 
+    .row 
+      .col-sm-6 
+        h2.fs-4 Thông tin đăng nhập:
+        form(action="#" method="post") 
+          +input([ { label: 'Họ tên:', id: 'hoten' }, { label: 'Email:', id: 'email' } ])
+
+          .d-flex.justify-content-between.m-4.mx-0
+            .login__input
+              input.form-check-input(type="checkbox" value="" id="flexCheckChecked" checked)
+              label.ms-2.form-check-label(for="flexCheckChecked") Ghi nhớ đăng nhập 
+
+            a.text-warning(href="/login.html") Bạn quên mật khẩu?
+          .button.mb-4
+            +button('Đăng nhập', '/login.html', 'btn-dark')
+
+
+      .col-sm-6 
+        h2.fs-4 Bạn chưa có tài khoản?
+        p.mt-4.mb-4.fs-6 Đăng kí tài khoản để mua hàng nhanh hơn. Theo dõi đơn đặt hàng, vận chuyển. Cập nhật các tin tức sự kiện và các chương trình giảm giá của chúng tôi
+        .button.mb-4
+          +button('Đăng ký', '/register.html', 'btn-warning')

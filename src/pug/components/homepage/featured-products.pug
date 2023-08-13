@@ -1,0 +1,13 @@
+mixin featured
+  .container.mt-5
+    +productType('Sản phẩm nổi bật')
+
+    .row
+      .col-3.d-lg-block.d-none
+        +categoryList('../../../assets/images/svg/list-yellow.svg', 'Danh mục sản phẩm', categoryList)
+      .col-lg-9.p-0
+        .container
+          .row 
+            each product in productsFeaturedData
+              .col-md-6.col-lg-4.mt-4
+                +productCard(product.price, product.title, product.image)

@@ -1,0 +1,8 @@
+mixin new
+  .container.mt-5
+    +productType('Hàng mới về')
+
+    .row
+      each product in productsNew
+        .col-xl-6.mt-4
+          +horizontalProduct(product.price, product.image, product.title, product.content)

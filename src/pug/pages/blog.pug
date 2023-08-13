@@ -1,0 +1,23 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Tin tức"
+  title=title
+
+block content 
+  +breadcrumb([{href: '#', title: 'Tin tức'}])
+
+  .container.mt-4.mb-4
+    .row
+      .col-3.d-lg-block.d-none
+        +categoryList('../../../assets/images/svg/list-yellow.svg', 'Danh mục sản phẩm', categoryList)
+        +categoryNone('../../../assets/images/svg/grid-fill.svg', 'Danh mục tin tức', categoryNone)
+        +categoryImage('../../../assets/images/svg/grid-fill.svg', 'Thư viện hình ảnh', categoryNone)
+        +categoryTag('../../../assets/images/svg/grid-fill.svg', 'Thẻ Tags', categoryTag)
+
+      .col-lg-9.p-0.mt-4
+        each post in blogPosts
+          .border-bottom.mb-5
+            +cardBlog(post)
+    .d-flex.justify-content-end.m-5.mx-0
+      +paginations(paginations)

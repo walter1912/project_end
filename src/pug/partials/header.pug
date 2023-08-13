@@ -1,0 +1,72 @@
+- const headerButtons = [ { href: '#', alt: 'Facebook', iconPath: '../../../assets/images/svg/facebook-f.svg' }, { href: '#', alt: 'Google Plus', iconPath: '../../../assets/images/svg/google-plus-g.svg' }, { href: '#', alt: 'Instagram', iconPath: '../../../assets/images/svg/instagram.svg' }, { href: '#', alt: 'Twitter', iconPath: '../../../assets/images/svg/twitter.svg' } ]
+- const navItems = [ { href: '/', text: 'Trang chủ' }, { href: '/blog.html', text: 'Tin tức' }, { href: '/category.html', text: 'Sản phẩm' }, { href: '/404.html', text: '404 Page' }, { href: '#', text: 'Tin khuyến mãi' }, { href: '#', text: 'Dịch vụ' } ]
+
+mixin headerButtonLink(href, alt, iconPath)
+  .header__button.header__button__icon.p-2
+    a(href=href)
+      img(src=iconPath, alt=alt)
+
+mixin navItemLink(href, text)
+  li.nav-item.nav__list
+    a.nav-link.link-light.text-light.p-4.text-uppercase(href=href)= text
+
+
+header.header
+  .bg-light
+    .container
+      .d-flex.justify-content-between.align-items-center
+        .d-md-flex.justify-content-between.align-items-center.d-none
+          each headerButton in headerButtons
+            +headerButtonLink(headerButton.href, headerButton.alt, headerButton.iconPath)
+
+        .d-flex.mx-md-0.mx-auto
+          .header__button.p-2.px-3
+            a.fw-bold.text-dark(href='/register.html') Đăng ký
+          .header__button.p-2.px-3
+            a.fw-bold.text-dark(href='/login.html') Đăng nhập
+
+  .header__logo.container.d-flex.justify-content-between.align-items-center.p-.flex-md-row.flex-column
+    a.navbar-brand(href='/')
+      img.logo(src='/assets/images/logo.png' alt='Logo')
+
+    .d-flex.justify-content-center.align-items-center
+      .header__logo-hotline.pe-5.d-lg-block.d-none
+        .header__logo-hotline-title.fw-bold.text-uppercase Hotline : 
+        a.text-decoration-none.text-dark(href='#') (04) 9500 9650 - (04) 9500 8850
+      .header__logo-hotline.pe-5.d-lg-block.d-none
+        .header__logo-hotline-title.fw-bold.text-uppercase Đặt hàng nhanh :
+        a.text-decoration-none.text-dark(href='#') (04) 9500 9650 - (04) 9500 8850
+      form.search(action="#" method="post") 
+        input.search__input(type="text" placeholder="Tìm kiếm...")
+        .search__button(type="submit")
+          include ../../../assets/images/svg/magnifying-glass-solid.svg
+
+
+
+  .menu 
+        .container
+            .menu__header
+                p.menu__collapse
+                    button.btn(type='button', data-bs-toggle='collapse', data-bs-target='#collapseWidthExample', aria-expanded='false', aria-controls='collapseWidthExample')
+                        svg(style='width: 20px; height: 20px; fill: white;', viewBox='0 0 512 512')
+                            path(d='M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24-H40')
+
+                ul.menu__list
+                    li.menu__item
+                        a.menu__link.active(aria-current='page' href='#') TRANG CHỦ
+                    li.menu__item
+                        a.menu__link(href='#') GIỚI THIỆU
+                    li.menu__item
+                        a.menu__link(href='#') SẢN PHẨM
+                    li.menu__item
+                        a.menu__link(href='#') TIN KHUYẾN MẠI
+                    li.menu__item
+                        a.menu__link(href='#') DỊCH VỤ
+                    li.menu__item
+                        a.menu__link(href='#') LIÊN HỆ
+                    
+                .menu__cart
+                    .menu__cart__wrap
+                        .menu__cart__icon
+                            i.fa-solid.fa-cart-shopping
+                        span.menu__cart__notice 3

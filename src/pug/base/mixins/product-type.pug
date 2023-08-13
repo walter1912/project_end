@@ -1,0 +1,11 @@
+mixin productType(title, ...products)
+  .product__type.d-flex.justify-content-between.align-items-center.mb-4
+    h6.pt-2.text-uppercase.fw-bold.text-dark.d-flex.justify-content-center.align-items-center
+      img.pe-2(src="../../../assets/images/svg/grid-fill.svg" alt=`${title}`)
+      span= title
+    .d-flex
+      .d-none.d-lg-block
+        each product in products
+          button.btn.btn-outline-warning.text-dark.me-3= product
+      button.btn.previous.rounded.fw-bold &#8249;
+      button.btn.next.rounded.fw-bold.ms-1 &#8250;

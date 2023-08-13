@@ -1,0 +1,11 @@
+mixin categoryTag(src, title, categoryTag)
+  .mt-4
+    p.p-3.px-0.text-dark.m-0.d-flex.align-items-center
+      img.pe-2(src=src alt=`list`)
+      span.fw-bold.text-uppercase= title
+    .d-flex.flex-wrap.mt-3
+      each keyword in categoryTag
+        if index === 0
+          button.btn.btn-outline-dark.m-1.fw-light.active= keyword
+        else
+          button.btn.btn-outline-dark.m-1.fw-light= keyword

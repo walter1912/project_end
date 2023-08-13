@@ -1,0 +1,5 @@
+mixin input(inputs)
+  each input, index in inputs
+    label.mt-4(for=inputs.id)= input.label
+    span.text-danger.ms-1.pt-2 *
+    input.mt-2.p-2(type="text" class="form-control" id=inputs.id)

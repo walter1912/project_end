@@ -1,0 +1,6 @@
+.detail {
+  &__button[aria-selected="true"] {
+    background-color: $black-color !important;
+    color: $primary-color !important;
+  }
+}

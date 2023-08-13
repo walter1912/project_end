@@ -1,0 +1,85 @@
+- var descriptionFooter = "Công ty Cổ phẩn Công nghệ DKT đã và đang  khẳng định được vị trí hàng đầu trong lĩnh vực Thương mại điện tử"
+
+- var connect = [ { icon: 'facebook-f.svg', title: 'Facebook' }, { icon: 'twitter.svg', title: 'Twitter' }, { icon: '../../../assets/images/svg/google-plus-g.svg', title: 'Google' }, { icon: '../../../assets/images/svg/skype.svg', title: 'Skype' }, { icon: 'instagram.svg', title: 'Instagram' } ];
+
+
+mixin footerList(title, className, ...items)
+  h6.text-uppercase.fw-bold.mb-4.text-dark.d-flex.justify-content-start.align-items-center
+    img.pe-2(src="../../../assets/images/svg/grid-fill.svg" alt=title)
+    span= title
+  each item in items
+    - let itemTitle = item.title || '';
+    - let itemHref = item.href || '#';
+    p
+      a.text-decoration-none(href=itemHref, class=className)= itemTitle
+
+mixin bankLogosRow(banks)
+  each bank in banks
+    .col-3.p-1
+      img.w-100(src=bank.src, alt=bank.alt)
+
+
+footer.text-lg-start.bg-light.text-muted.pt-5.mb-4
+  .container.text-md-start
+    .row.mt-3.border-bottom
+      .col-md-7.col-lg-6.col-xl-4.col-xxl-3.mx-auto.mb-4
+        a.text-decoration-none(href="/")
+          h6.text-uppercase.fw-bold.mb-4.text-dark.d-flex.justify-content-start.align-items-center
+            img.pe-2(src="../../../assets/images/svg/grid-fill.svg" alt="Về chúng tôi")
+            span Về chúng tôi
+        p.mt-3= descriptionFooter
+        p.me-5
+          i.fas.fa-home.me-2
+          | Tầng 4 - Toà nhà Hanoi Group   
+          span.ms-4 442 Đội Cấn Ba Đình - Hà Nội
+        p
+          i.fas.fa-phone.me-2
+          | (04) 9500 9650 - (04) 9500 8850
+        p
+          i.fas.fa-print.me-2
+          | support@dkt.com.vn
+      .col-md-4.col-lg-3.col-xl-2.col-xxl-2.mx-auto.mb-4
+        +footerList('Chính sách', 'text-reset', { title: 'Chính sách giao hàng', href: '#' }, { title: 'Chính sách đổi sản phẩm', href: '#' }, { title: 'Chính sách bảo hành', href: '#' }, { title: 'Chính sách trả góp', href: '#' }, { title: 'Giới thiệu hàng đổi trả', href: '#' }, { title: 'Vận chuyển miễn phí', href: '#' } )
+
+      .col-md-4.col-lg-3.col-xl-2.col-xxl-2.mx-auto.mb-4
+        +footerList('Dịch vụ & hỗ trợ', 'text-reset', { title: 'Hệ thống cửa hàng', href: '#' }, { title: 'Hướng dẫn mua hàng', href: '#' }, { title: 'Tích điểm đổi thưởng', href: '#' }, { title: 'Dịch vụ đổi trả hàng', href: '#' }, { title: 'Câu hỏi thường gặp', href: '#' } )
+
+      .col-md-4.col-lg-6.col-xl-2.col-xxl-2.mx-auto.mb-4
+        +footerList('Tin tức - sự kiện', 'text-reset', { title: 'Tin tức mới nhất', href: '#' }, { title: 'Tin tức khuyến mãi', href: '#' }, { title: 'Tuyển dụng, đãi ngộ', href: '#' }, { title: 'Download tài liệu', href: '#' }, { title: 'Chương trình đối tác', href: '#' }, { title: 'Nhà phát triển ứng dụng', href: '#' } )
+
+      .col-md-4.col-lg-6.col-xl-2.col-xxl-2.mx-auto.mb-4
+        a.text-decoration-none(href="/")
+          h6.text-uppercase.fw-bold.mb-4.text-dark.d-flex.justify-content-start.align-items-center
+            img.pe-2(src="../../../assets/images/svg/grid-fill.svg")
+            span Kết nối
+        each val in connect
+          p.me-5
+            a.text-decoration-none.text-dark(href="#") 
+              img.pe-2(src=`../../../assets/images/svg/${val.icon}` alt=`${val.title}`)
+              = val.title
+
+    .container.mt-3
+      .row 
+        .col-md-6
+          p Thanh toán 
+          .container.p-0.pe-5
+            .row 
+              +bankLogosRow([ { src: "../../../assets/images/png/techbank.png", alt: "techcombank" }, { src: "../../../assets/images/png/viettinbank.png", alt: "viettinbank" }, { src: "../../../assets/images/png/vpbank.png", alt: "vpbank" }, { src: "../../../assets/images/png/tienphongbank.png", alt: "tienphongbank" } ])
+            .row.p-1.px-0
+              +bankLogosRow([ { src: "../../../assets/images/png/maritimebank.png", alt: "maritimebank" }, { src: "../../../assets/images/png/dongabank.png", alt: "dongabank" }, { src: "../../../assets/images/png/asbank.png", alt: "asbank" }, { src: "../../../assets/images/png/vietcapitalbank.png", alt: "vietcapitalbank" } ])
+
+        .col-md-6
+          p Giải đáp nhanh 
+          .d-flex.justify-content-around.flex-xl-row.flex-column
+            .d-flex.mb-3
+              .p-3.px-3.rounded-circle.border.border-warning.d-flex.align-items-center
+                img(src="../../../assets/images/svg/telephone-fill.svg" alt="" srcset="")
+              .ps-3.text-center
+                p.mb-0 Tư vấn miễn phí (24/7)
+                p.mb-0.text-danger.fw-bold.fs-5 1900 650 650
+            .d-flex.mb-3
+              .p-3.px-3.rounded-circle.border.border-warning.d-flex.align-items-center
+                img(src="../../../assets/images/svg/chat-dots-fill.svg" alt="" srcset="")
+              .ps-3.text-center
+                p.mb-0 Góp ý - phản hồi - thắc mắc
+                p.mb-0.text-danger.fw-bold.fs-5 1900 650 650

@@ -1,0 +1,88 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Máy khoan CNC 3D"
+  title=title
+
+block content 
+  +breadcrumb([{href: '/category.html', title: 'Danh mục sản phẩm'}, {href: '#', title: 'Máy khoan CNC 3D'}])
+
+  .container.mt-4.mb-4
+    .row
+      .col-3.d-lg-block.d-none
+        +categoryList('../../../assets/images/svg/list-yellow.svg', 'Danh mục sản phẩm', categoryList)
+
+        .category__list.border-bottom.mt-4.shadow-sm
+          p.category__list__item.p-3.text-dark.border.border-bottom-0.m-0.d-flex.align-items-center
+            img.pe-2.category__gif(src='../../../assets/images/svg/gift-fill.svg' alt=`list`)
+            span Sản phẩm khuyến mại
+          each product in productsFeaturedData
+            +productTag(product.price, product.title, product.image)
+
+      .col-lg-9.p-0.mt-4
+        .container.pe-0
+          .row 
+            .col-sm-5.mb-4
+              .container.p-0 
+                .row.mb-2 
+                  .col-12.border
+                    img.w-100(src="../../assets/images/png/layer-46.png" alt="green-blackdecker")
+                .row.justify-content-between
+                  each image in listImagesDetail
+                    .col-3.border
+                      img.w-100(src=image.src, alt=image.alt)
+
+            .col-sm-7
+              h1.fs-4.fw-bold.card-titleCard.text-uppercase= detailProduct.title
+              p.card-text.mb-1
+                each index in [1, 2, 3, 4, 5]
+                  img.me-1(src="../../../assets/images/svg/star-fill.svg" alt="star")
+                | (12 đánh giá)
+                span.mx-2 | 
+                a.text-dark(href="#") Gửi bình luận của bạn 
+              p.fs-4.px-0.text-danger.fw-bold.p-2.border-bottom
+                | GNY: 
+                span= detailProduct.price
+                | Đ
+              p.fw-bold.mb-0 Thông tin sản phẩm: 
+              p.px-0.p-2.border-bottom= detailProduct.content
+
+              .container.px-0.pb-2.border-bottom
+                .row 
+                  each select in selectSizeColor
+                    .col-6 
+                      p.fw-bold= select.title
+                      +selectOption("", select.option)
+              .button.m-2.mx-0
+                +button("Mua ngay", '#', 'btn-warning')
+              img.mt-0.w-75(src="../../assets/images/png/share.png" alt="green-blackdecker")
+
+            .container.mt-5
+              ul.detail.nav.nav-tabs#myTabDetailProduct(role="tablist")
+                each tab, index in tabsDetailProduct
+                  - const className = index === 0 ? 'active' : '' 
+                  li.nav-item(role="presentation")
+                    button.detail__button.text-dark.nav-link(
+                      id=tab.id + '-tab',
+                      data-bs-toggle="tab",
+                      data-bs-target="#" + tab.id,
+                      type="button",
+                      role="tab",
+                      aria-controls=tab.id,
+                      aria-selected=tab.active,
+                      class=className
+                    )= tab.label
+
+              div(class="tab-content" id="myTabContent")
+                each tab, index in tabsDetailProduct
+                  - const className = index === 0 ? 'show active' : '' 
+                  div.tab-pane.fade(class=className, id=tab.id, role="tabpanel", aria-labelledby=tab.id + '-tab')
+                    p.border.border-top-0.p-5= tab.content
+
+              .container.p-0.mt-5.mb-5
+                +productType('Sản phẩm nổi bật')
+                .container.p-0
+                  .row 
+                    each product in productsData
+                      .col-md-6.col-lg-4.mt-2
+                        +productCard(product.price, product.title, product.image)

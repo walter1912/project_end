@@ -1,0 +1,15 @@
+mixin banner
+  .banner.mt-5
+    .container
+      .row.w-100.mx-auto
+        .col-lg-7.col-xl-8.p-0
+          +carousel('SLIDER1.png', 'SLIDER1.png', 'SLIDER1.png')
+
+        .col-lg-5.col-xl-4.p-0.d-flex.flex-column.position-relative
+          each val in banners
+            .banner__container.d-flex.justify-content-lg-center.justify-content-start.align-items-center.p-2.border.border-warning.position-relative.h-100
+              .px-3
+                img(src=`../../../assets/images/svg/${val.icon}` class='icon-image')
+              .banner__content
+                h3.fs-6= val.title
+                p= val.content

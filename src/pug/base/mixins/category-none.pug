@@ -1,0 +1,8 @@
+mixin categoryNone(src, title, categoryNone)
+  .border-bottom.mt-4
+    p.category__none__item.p-3.px-0.text-dark.border-bottom.border-warning.m-0.d-flex.align-items-center
+      img.category__list__icon.pe-2(src=src alt=`list`)
+      span.fw-bold.text-uppercase= title
+    each category in categoryNone
+      p.category__none__item.p-3.px-0.text-dark.border-bottom.m-0.d-flex.align-items-center
+        span= category

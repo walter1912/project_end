@@ -1,0 +1,10 @@
+mixin categoryImage(src, title, categoryNone)
+  .border-bottom.mt-4
+    p.p-3.px-0.text-dark.border-bottom.border-warning.m-0.d-flex.align-items-center
+      img.pe-2(src=src alt=`list`)
+      span.fw-bold.text-uppercase= title
+    .container.p-0.px-1 
+      .row
+        each imageInfo in categoryImage
+          .col-4.mb-4
+            img(src=imageInfo.path, alt=imageInfo.alt)

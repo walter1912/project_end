@@ -1,0 +1,54 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Tin tức"
+  title=title
+
+block content 
+  +breadcrumb([{href: '#', title: 'Tin tức'}])
+
+  .container.mt-4.mb-4
+    .row
+      .col-3.d-lg-block.d-none
+        +categoryList('../../../assets/images/svg/list-yellow.svg', 'Danh mục sản phẩm', categoryList)
+        +categoryNone('../../../assets/images/svg/grid-fill.svg', 'Danh mục tin tức', categoryNone)
+        +categoryImage('../../../assets/images/svg/grid-fill.svg', 'Thư viện hình ảnh', categoryNone)
+        +categoryTag('../../../assets/images/svg/grid-fill.svg', 'Thẻ Tags', categoryTag)
+
+      .col-lg-9.p-0.px-2.mt-4.blog__detail
+        each post, index in blogPostsDetail
+          if index === 0
+            +cardBlog(post)
+          else 
+            +cardBlogDetail(post)
+
+        .d-flex.flex-sm-row.flex-column.m-2.mx-0.justify-content-between.mb-4.border-bottom
+          span.fw-bold.me-3.mb-3 TAGS:
+            each keyword, index in categoryTag
+              - const className = index === 0 ? 'text-warning' : ''
+              span.me-2.fw-light.fst-italic(class=className)= keyword
+                |,
+          .d-flex.fw-bold.mb-4 Chia sẻ:  
+            .d-flex.justify-content-between.align-items-center.ms-2
+              each mxh in headerButtons
+                +headerButtonLink(mxh.href, mxh.alt, mxh.iconPath)
+        .container.p-5.px-2.mb-4.border-bottom
+          p.fs-4.fw-bold Bình luận:
+          each comment, index in comments
+            +comment(comment)
+            if index === 0
+              .comment__sub
+                +comment(comment)
+        .container.p-5.px-2.mb-4
+          p.fs-4.fw-bold Viết bình luận của bạn:
+          form(action="#" method="post")
+            .row 
+              .col-md-6
+                +input([ { label: 'Họ và tên:', id: 'hoten' }])
+              .col-md-6
+                +input([ { label: 'Email:', id: 'email' } ])
+            .row  
+              .col-12
+                +textarea([{ label: 'Bình luận', id: 'comment', require: false }])
+            .button.m-4.mx-0
+              +button('Gửi bình luận', '#', 'btn-warning')

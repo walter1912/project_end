@@ -1,0 +1,16 @@
+.category__list {
+  cursor: pointer;
+  .category__color:hover {
+    background-color: $primary-color;
+  }
+
+  .category__gif {
+    width: 24px;
+  }
+}
+
+.nav {
+  &__img {
+    filter: contrast(0);
+  }
+}

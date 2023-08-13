@@ -1,0 +1,13 @@
+mixin breadcrumb(breadcrumbs)
+  .container.border-bottom
+    .row
+      .col
+        ol.breadcrumb.p-3.px-0.mb-0
+          li.breadcrumb-item
+            a(href='/') Trang chủ
+          each breadcrumb, index in breadcrumbs
+            if index === breadcrumbs.length - 1
+              li.breadcrumb-item.active(aria-current='page')= breadcrumb.title
+            else
+              li.breadcrumb-item
+                a(href=breadcrumb.href)= breadcrumb.title

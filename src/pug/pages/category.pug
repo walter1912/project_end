@@ -1,0 +1,52 @@
+extends ../layouts/default-layout.pug
+
+block head 
+  - var title = "Danh mục sản phẩm"
+  title=title
+
+block content 
+  +breadcrumb([{href: '#', title: 'Danh mục sản phẩm'}])
+
+  .container.mt-4.mb-4
+    .row
+      .col-3.d-lg-block.d-none
+        +categoryList('../../../assets/images/svg/list-yellow.svg', 'Danh mục sản phẩm', categoryList)
+        +categoryList('../../../assets/images/svg/currency-dollar.svg', 'Tìm theo mức giá', categoryPrice)
+
+        +categoryColor('../../../assets/images/svg/brush-fill.svg', 'Tìm theo màu sắc', categoryColor)
+
+        .category__list.border-bottom.mt-4.shadow-sm
+          p.category__list__item.p-3.text-dark.border.border-bottom-0.m-0.d-flex.align-items-center
+            img.pe-2.category__gif(src='../../../assets/images/svg/gift-fill.svg' alt=`list`)
+            span.fw-bold.text-uppercase Sản phẩm khuyến mại
+          each product in productsFeaturedData
+            +productTag(product.price, product.title, product.image)
+
+      .col-lg-9.p-0.mt-4
+        .d-flex.justify-content-between.flex-sm-row.flex-column.pb-4.border-bottom
+          .d-flex.flex-sm-row.flex-column
+            .me-3.mb-sm-0.mb-4
+              +selectOption("Sắp xếp theo", optionsSort)
+            .mb-sm-0.mb-4
+              +selectOption("Show", optionsShow)
+          .d-flex.h-100
+            ul.nav.nav-tabs#myTab(role="tablist")
+              each tab in tabsCategory
+                li.nav-item(role="presentation")
+                  button.nav-link(
+                    class=tab.active ? 'active' : '', id=tab.id + '-tab', data-bs-toggle="tab", data-bs-target="#" + tab.id, type="button", role="tab", aria-controls=tab.id, aria-selected=tab.active)
+                    img.nav__img(src=tab.image, alt=tab.label)
+        div(class="tab-content" id="myTabContent")
+          div.tab-pane.fade.show.active#home(role="tabpanel" aria-labelledby="home-tab")
+            each product in productCategory
+              .mt-4
+                +horizontalProduct(product.price, product.image, product.title, product.content)
+          div.tab-pane.fade(id="profile" role="tabpanel" aria-labelledby="profile-tab")
+            .container
+              .row 
+                each product in productCategory
+                  .col-md-6.col-lg-4.mt-4
+                    +productCard(product.price, product.title, product.image)
+
+    .d-flex.justify-content-end.m-5.mx-0
+      +paginations(paginations)

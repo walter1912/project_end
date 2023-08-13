@@ -1,0 +1,12 @@
+mixin latest
+  .container.mt-5
+    +productType('Sản phẩm mới', 'Máy khoan', 'Máy in 3D', 'Máy CNC', 'Máy tiện', 'Máy khác')
+
+    .row
+      each product in productsData
+        .col-md-6.col-lg-4.mt-4
+          +productCard(product.price, product.title, product.image)
+    .row.mt-4
+      each product in bannerLatestProduct
+        .col-sm-6.mb-4
+          img.w-100(src=product.image alt=product.alt)
